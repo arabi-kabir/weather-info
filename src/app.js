@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, '../public')))
 /* Routes */
 app.get('', (req, res) => {
     res.render('index', {
-        title: 'Index',
+        title: 'Weather',
         name: 'Arabi'
     });
 })
@@ -56,7 +56,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help',
         name: 'Arabi',
-        para: 'lorem ipsqm is khan back is response'
+        para: 'There is no help.'
     });
 })
 
@@ -64,10 +64,6 @@ app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About'
     })
-})
-
-app.get('/help', (req, res) => {
-    res.send('Hi express help');
 })
 
 app.get('*', (req, res) => {
