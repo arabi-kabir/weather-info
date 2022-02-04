@@ -11,14 +11,14 @@ messageTwo.textContent = ''
 messageThree.textContent = ''
 
 searchWeather = (place) => {
-    fetch('http://localhost:3000/weather?address=' + place).then((response) => {
+    fetch('/weather?address=' + place).then((response) => {
         response.json().then((data) => {
             if(data.error) {
                 messageOne.textContent = ''
                 messageTwo.textContent = data.error
                 messageThree.textContent = ''
             } else {
-                messageOne.textContent = "Search : " + data.address; 
+                messageOne.textContent = "Search : " + data.address;
                 messageTwo.textContent = "Forecast : " + data.forecast;
                 messageThree.textContent ="Location : " + data.location;
             }

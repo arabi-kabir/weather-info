@@ -6,6 +6,7 @@ const geocode = require('./utils/geocode');
 const weather = require('./utils/weather');
 
 const app = express()
+const port = process.env.PORT || 3000
 
 // Handlebars engine
 const viewsPath = path.join(__dirname, '../views/pages')
@@ -34,14 +35,14 @@ app.get('/weather', (req, res) => {
 
     const place = req.query.address;
 
-    /* Geocoding */ 
+    /* Geocoding */
     geocode(place, (error, data) => {
         if(error) return console.log("Error - " + error);
-        
+
         /* Weather */
         weather(data.lat, data.lon, (error, weather_data) => {
             if(error) return console.log("Error - " + error);
-  
+
             res.send({
                 address: req.query.address,
                 forecast: weather_data,
@@ -77,8 +78,6 @@ app.get('*', (req, res) => {
 
 
 
-
-
-app.listen(3000, () => {
-    console.log('Server is up on port 3000');
+app.listen(port, () => {
+    console.log('Server is up on port ' + port);
 })
